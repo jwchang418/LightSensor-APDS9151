@@ -16,7 +16,13 @@ This project adopts MicroPython as the programming language, hence we have to se
 We use Thonny as development enviroment which can be downloaded at [here](https://thonny.org/)
 
 ## Code
-Save the code as main.py into the raspberry pi pico w.
+Save the code as main.py and apds.py files into the raspberry pi pico.
+
+## Result
+Run the main.py, then you can sea the result shown as following image. You can use the Plotter (View->Plotter) show the values like right down curves<br>
+
+
+![image](result.png)
 
 ## Reference
 * Raspberry Pi Pico <br>
