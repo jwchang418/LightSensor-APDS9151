@@ -131,7 +131,7 @@ class APDS():
 
     def get_ps_data(self):
         data_bytes = self.__read_reg(self.LS_DATA_IR_ADDR,2)
-        return ustruct.unpack("<H",data_bytes + b'\x00')[0]
+        return ustruct.unpack("<H",data_bytes)[0]
 
 
     def get_ls_data_ir(self):
