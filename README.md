@@ -14,6 +14,8 @@ Its schematic is shown as follows.
 <br>
 <br>
 According the schematic, the module's layout is shown as follows.
+<br>
+<br>
 <img src="./img/PCB_f.png" alt="image" width="200" height="auto">
 <img src="./img/PCB_b.png" alt="image" width="200" height="auto">
 
