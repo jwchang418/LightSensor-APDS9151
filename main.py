@@ -2,11 +2,14 @@ import time
 import apds
 
 ls = apds.APDS()
-ls.set_mode()
+ls.enable_light_sensor()
+ls.set_rgb_mode()
 
 while True:
-    print('ir = {}'.format(ls.get_ls_data_ir()),end='\t')
-    print('green = {}'.format(ls.get_ls_data_green()),end='\t')
-    print('blue = {}'.format(ls.get_ls_data_blue()),end='\t')
-    print('red = {}'.format(ls.get_ls_data_red()))
+    r, g, b = ls.get_rgb_value()
+    ir = ls.get_ir_value()
+    print('ir = {}'.format(ir),end='\t')
+    print('green = {}'.format(r),end='\t')
+    print('blue = {}'.format(g),end='\t')
+    print('red = {}'.format(b))
     time.sleep(0.1)
