@@ -90,6 +90,92 @@ class APDS():
         self.i2c = machine.I2C(i2c_id, scl=machine.Pin(scl_pin), sda=machine.Pin(sda_pin))
         self.i2c_addr = i2c_addr
         return
+    
+
+    def set_rgb_mode(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        rgb_mode = True
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+        
+
+    def set_ambient_light_mode(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        rgb_mode = False
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+
+
+    def enable_light_sensor(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        ls_en = True
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+
+
+    def disable_light_sensor(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        ls_en = False
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+
+
+    def enable_proximity_sensor(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        ps_en = True
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+
+
+    def disable_proximity_sensor(self):
+        ps_en, ls_en, rgb_mode, sw_reset, sai_ls, sai_ps  = self.get_main_ctrl()
+        ps_en = False
+        self.set_main_ctrl( sai_ps = sai_ps, \
+                            sai_ls = sai_ls, \
+                            sw_reset = sw_reset, \
+                            rgb_mode = rgb_mode, \
+                            ls_en = ls_en, \
+                            ps_en = ps_en )
+
+
+    def get_als_value(self):
+        return self.get_ls_data_green()
+    
+
+    def get_rgb_value(self):
+        r = self.get_ls_data_red()
+        g = self.get_ls_data_green()
+        b = self.get_ls_data_blue()
+        return r, g, b
+    
+
+    def get_ir_value(self):
+        return self.get_ls_data_ir()
+
+
+    def get_ps_value(self):
+        return self.get_ps_data()
+    
 
     # write data to register
     def __write_reg(self,reg_addr,set_data):
@@ -167,8 +253,20 @@ class APDS():
 
     def get_main_ctrl(self):
         data_bytes = self.__read_reg(self.__MAIN_CTRL_ADDR,1)
-        return ustruct.unpack("B",data_bytes)[0]
-    
+        data_uchar = ustruct.unpack("B",data_bytes)[0]
+        ps_en = data_uchar & 0x01
+        ls_en = (data_uchar >> 1) & 0x01
+        rgb_mode = (data_uchar >> 2) & 0x01
+        sw_reset = (data_uchar >> 4) & 0x01
+        sai_ls = (data_uchar >> 5) & 0x01
+        sai_ps = (data_uchar >> 6) & 0x01
+        return ps_en, \
+               ls_en, \
+               rgb_mode, \
+               sw_reset, \
+               sai_ls, \
+               sai_ps
+
 
     def get_ls_means_rate(self):
         data_bytes = self.__read_reg(self.__LS_MEANS_RATE_ADDR,1)
