@@ -34,6 +34,7 @@ Save the code as [__main.py__](./main.py) and [__apds.py__](./apds.py) files int
 
 
 Than, run the main.py, then you can sea the result shown as following image. You can use the __Plotter__ (View->Plotter) show the values like right down curves
+
 <br>
 
 ![image](./img/result.png)
@@ -47,20 +48,23 @@ Than, run the main.py, then you can sea the result shown as following image. You
                      [sda_pin = 16] )
 
 Construct a new APDS object with the given arguments:
-* <b>i2c_addr</b> The i2c address of the apds9151 (optional)
-* <b>i2c_id</b> The i2c ID of the pi pico
-* <b>scl_pin</b> The pin of the scl
-* <b>sda_pin</b> The pin of the sda
+* __i2c_addr__ The i2c address of the apds9151 (optional)
+* __i2c_id__ The i2c ID of the pi pico
+* __scl_pin__ The pin of the scl
+* __sda_pin__ The pin of the sda
 
 ### Method
 
-    class apds.set_main_ctrl( [sai_ps = False],
-                              [sai_ls = False],
-                              [sw_reset = False],
-                              [rgb_mode = False],
-                              [ls_en = False],
-                              [ps_en = False] )
+    class apds.enable_light_sensor()
+<br>
 
+    class apde.set_rgb_mode()
+<br>
+
+    class apde.get_rgb_value()
+<br>
+
+    class apde.get_ir_value()
 
 ## Reference
 * Raspberry Pi Pico <br>
