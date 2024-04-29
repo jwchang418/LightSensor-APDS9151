@@ -56,15 +56,39 @@ Construct a new APDS object with the given arguments:
 ### Method
 
     class apds.enable_light_sensor()
+After power-on or software reset, the light sensor defaults to standby mode. To use the light sensor, it should be set to active mode using this method.
+
 <br>
 
-    class apde.set_rgb_mode()
+    class apds.set_ambient_light_mode
+
+The APDS9151 defaults to ambient light mode. When users change the light detection mode, the method to revert to the default mode should not require a software reset. In ambient light mode, only the output values from the ALS(Green) channel and IR channel are available. The output values of the other channels are all 0.
+
 <br>
 
-    class apde.get_rgb_value()
+    class apds.set_rgb_mode()
+
+ If users require to Red, Green and Blue light brightness values, the sensor mode has to be set to RGB mode.
+
+
 <br>
 
-    class apde.get_ir_value()
+    class apds.get_als_value()
+
+Aquire the als valse.
+
+
+<br>
+
+    class apds.get_rgb_value()
+
+Aquire the brightness values of red, green, and blue in the form of (R, G, B).
+
+<br>
+
+    class apds.get_ir_value()
+
+Aquire the ir value.
 
 ## Reference
 * Raspberry Pi Pico <br>
