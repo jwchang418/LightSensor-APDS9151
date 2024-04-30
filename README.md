@@ -15,6 +15,8 @@ According the schematic, the module's layout is shown as follows. This PCB has a
 <br>
 <img src="./img/PCB_f.png" alt="image" width="200" height="auto">
 <img src="./img/PCB_b.png" alt="image" width="200" height="auto">
+<br>
+<br>
 
 ## Pin Connection
 | raspberry pi pico w | | APDS-9151 Module|
@@ -23,11 +25,16 @@ According the schematic, the module's layout is shown as follows. This PCB has a
 | Gnd | -> | GND |
 | GP16 | -> | SDA |
 | GP17 | -> | SCL |
+<br>
+
 ## Installing
 This project adopts MicroPython as the programming language, hence we have to setup the MicroPython on the raspberry pi pico. At raspberry pi's official webside [__here__](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html), we can find the explain of setup in detail.
+<br>
+<br>
 
 ## Thonny
 We use Thonny as development enviroment which can be downloaded at [__here__](https://thonny.org/)
+<br><br>
 
 ## Quick Start
 Save the code as [__main.py__](./main.py) and [__apds.py__](./apds.py) files into the raspberry pi pico.
@@ -39,6 +46,8 @@ Than, run the main.py, then you can sea the result shown as following image. You
 
 ![image](./img/result.png)
 
+<br>
+
 ## Class APDS
 ### Constructor
 
@@ -49,9 +58,9 @@ Than, run the main.py, then you can sea the result shown as following image. You
 
 Construct a new APDS object with the given arguments:
 * __i2c_addr__ The i2c address of the apds9151 (optional)
-* __i2c_id__ The i2c ID of the pi pico
-* __scl_pin__ The pin of the scl
-* __sda_pin__ The pin of the sda
+* __i2c_id__ The i2c ID of the pi pico (optional)
+* __scl_pin__ The pin of the scl (optional)
+* __sda_pin__ The pin of the sda (optional)
 
 ### Method
 
@@ -60,7 +69,7 @@ After power-on or software reset, the light sensor defaults to standby mode. To 
 
 <br>
 
-    class apds.set_ambient_light_mode
+    class apds.set_ambient_light_mode()
 
 The APDS9151 defaults to ambient light mode. When users change the light detection mode, the method to revert to the default mode should not require a software reset. In ambient light mode, only the output values from the ALS(Green) channel and IR channel are available. The output values of the other channels are all 0.
 
@@ -75,20 +84,22 @@ The APDS9151 defaults to ambient light mode. When users change the light detecti
 
     class apds.get_als_value()
 
-Aquire the als valse.
+Acquire the als valse.
 
 
 <br>
 
     class apds.get_rgb_value()
 
-Aquire the brightness values of red, green, and blue in the form of (R, G, B).
+Acquire the brightness values of red, green, and blue in the form of (R, G, B).
 
 <br>
 
     class apds.get_ir_value()
 
-Aquire the ir value.
+Acquire the ir value.
+<br>
+<br>
 
 ## Reference
 * Raspberry Pi Pico <br>
@@ -97,6 +108,8 @@ https://www.raspberrypi.com/products/raspberry-pi-pico/
 https://www.broadcom.com/products/optical-sensors/integrated-ambient-light-and-proximity-sensors/apds-9151
 * MicroPython i2c<br>
 https://docs.micropython.org/en/latest/library/machine.I2C.html
+<br>
+<br>
 
 ## license
 Licensed under creative commons attribution CC BY-NC-SA
