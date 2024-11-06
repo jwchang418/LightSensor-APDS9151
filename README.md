@@ -10,7 +10,7 @@ Its schematic is shown as follows. The complete schematic is available [__here__
 ![](./img/sch.png)
 <br>
 <br>
-According the schematic, the module's layout is shown as follows. This PCB has a size of 15x14mm. You can find the Gerber files for this module in the zip file available [__here__](./module/gerber.zip).
+According the schematic, the module's layout is shown as follows. This PCB has a size of 15x14mm. You can find the Gerber files for this module in the zip file available [__here__](./PCB/gerber.zip).
 <br>
 <br>
 <img src="./img/PCB_f.png" alt="image" width="200" height="auto">
