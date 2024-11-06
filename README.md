@@ -4,7 +4,7 @@ A digital proximity and RGB light sensor called ADPS-9151 is easily to use for d
 ## APDS-9151 Module
 An APDS-9151 module for test the program is needed, so we desgin a simple PCB for installing the sensor. 
 Considering that the sensor needs 1.7V to 3.6V supply voltage and the MCU development borad may not supports 3.3V output, a voltage regulator is required.
-Its schematic is shown as follows. The complete schematic is available [__here__](./module/APDS9151_Module.pdf).
+Its schematic is shown as follows. The complete schematic is available [__here__](./PCB/APDS9151_Module.pdf).
 <br>
 <br>
 ![](./img/sch.png)
